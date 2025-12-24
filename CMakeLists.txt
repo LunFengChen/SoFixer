@@ -22,8 +22,12 @@ endif()
 
 
 
-# 使用 CMAKE_CXX_STANDARD 替代编译器标志（更现代、跨平台）
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")  # 已废弃
+# Debug 模式添加调试符号
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+    message("Building in Debug mode with symbols")
+endif()
+
 if(MINGW)
     message("build with mingw")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static -static-libgcc -static-libstdc++")
