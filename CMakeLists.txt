@@ -1,5 +1,9 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.10...3.28)
 project(SoFixer)
+
+# 设置 C++ 标准的现代方式
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # =========================================================
 # SoFixer options
@@ -18,7 +22,8 @@ endif()
 
 
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+# 使用 CMAKE_CXX_STANDARD 替代编译器标志（更现代、跨平台）
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")  # 已废弃
 if(MINGW)
     message("build with mingw")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static -static-libgcc -static-libstdc++")
